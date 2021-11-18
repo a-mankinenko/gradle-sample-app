@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.4.RELEASE'
 	id 'java'
+	id 'jacoco'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -23,4 +24,17 @@ test {
     useJUnit()
 
     maxHeapSize = '1G'
+    
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
 }
